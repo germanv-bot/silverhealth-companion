@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { questionnaire } from '../data/questionnaire';
 import QuestionRenderer from './QuestionRenderer';
 import { analyzeWithOpenAI } from '../utils/openaiService';
+import { generateFullReport, downloadAsTextFile, copyToClipboard } from '../utils/downloadReport';
 
 export default function NewWizard({ onReset }) {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
@@ -10,6 +11,7 @@ export default function NewWizard({ onReset }) {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysis, setAnalysis] = useState(null);
   const [error, setError] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const currentSection = questionnaire.sections[currentSectionIndex];
   const currentQuestion = currentSection?.questions[currentQuestionIndex];
@@ -56,6 +58,21 @@ export default function NewWizard({ onReset }) {
       setError(err.message || 'Error al analizar el cuestionario');
     } finally {
       setIsAnalyzing(false);
+    }
+  };
+
+  const handleDownload = () => {
+    const fullReport = generateFullReport(answers, questionnaire, analysis);
+    const timestamp = new Date().toISOString().split('T')[0];
+    downloadAsTextFile(fullReport, `SilverHealth_Reporte_${timestamp}.txt`);
+  };
+
+  const handleCopy = async () => {
+    const fullReport = generateFullReport(answers, questionnaire, analysis);
+    const success = await copyToClipboard(fullReport);
+    if (success) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);
     }
   };
 
@@ -112,6 +129,100 @@ export default function NewWizard({ onReset }) {
                 No reemplaza la consulta médica profesional. Comparta estos resultados con su médico.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Botones de Descarga y Compartir */}
+        <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-200 mb-8">
+          <h4 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+            Guarde su Análisis Completo
+          </h4>
+          <p className="text-gray-600 text-center mb-6">
+            Descargue el cuestionario con sus respuestas y el análisis del panel médico
+          </p>
+
+          <div className="flex flex-wrap gap-4 justify-center">
+            <button
+              onClick={handleDownload}
+              className="group flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-105"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd"/>
+              </svg>
+              Descargar Reporte (TXT)
+            </button>
+
+            <button
+              onClick={handleCopy}
+              className={`group flex items-center gap-3 font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-105 ${
+                copied
+                  ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white'
+                  : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white'
+              }`}
+            >
+              {copied ? (
+                <>
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                  </svg>
+                  ¡Copiado!
+                </>
+              ) : (
+                <>
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/>
+                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/>
+                  </svg>
+                  Copiar al Portapapeles
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Invitación para Compartir con Otros */}
+        <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border-2 border-purple-200 shadow-xl mb-8">
+          <div className="text-center">
+            <div className="mb-4 inline-block bg-gradient-to-br from-purple-100 to-pink-100 p-4 rounded-2xl">
+              <svg className="w-12 h-12 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+              </svg>
+            </div>
+
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+              Ayude a sus Seres Queridos
+            </h3>
+
+            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+              La prevención salva vidas. Invite a sus familiares y amigos a realizar este chequeo de salud.
+            </p>
+
+            <div className="bg-white p-6 rounded-2xl shadow-md mb-6">
+              <p className="text-lg text-gray-800 mb-4">
+                <span className="font-bold text-purple-600">¿Sabía que...</span> detectar factores de riesgo tempranamente puede agregar años de vida saludable?
+              </p>
+              <p className="text-base text-gray-600">
+                Compartir este cuestionario con personas que le importan es un acto de amor y cuidado.
+              </p>
+            </div>
+
+            <button
+              onClick={() => {
+                const url = window.location.href.split('?')[0];
+                copyToClipboard(url);
+                alert('¡Enlace copiado! Compártelo con tus seres queridos.');
+              }}
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-xl font-bold px-10 py-5 rounded-2xl shadow-2xl transition-all duration-300 hover:shadow-3xl transform hover:scale-105"
+            >
+              <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+              </svg>
+              Compartir SilverHealth
+            </button>
+
+            <p className="text-sm text-gray-500 mt-4">
+              Copia el enlace y compártelo por WhatsApp, email o redes sociales
+            </p>
           </div>
         </div>
 

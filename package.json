@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "setup-key": "node scripts/setup-key.js",
+    "check-key": "node scripts/check-key.js"
   },
   "dependencies": {
     "react": "^19.2.0",

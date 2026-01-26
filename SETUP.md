@@ -46,6 +46,7 @@ La aplicación estará disponible en: http://localhost:5173
 El cuestionario está dividido en 3 partes:
 
 1. **Parte 1 - Hábitos y funcionamiento diario**
+   - Sexo biológico
    - Sueño (horas, calidad, apnea)
    - Energía
    - Actividad física
@@ -59,7 +60,7 @@ El cuestionario está dividido en 3 partes:
    - Enfermedades diagnosticadas
    - Medicamentos actuales
    - Suplementos
-   - Antecedentes familiares
+   - Antecedentes familiares (enfermedades hereditarias)
 
 3. **Parte 3 - Factores de longevidad**
    - Función sexual
@@ -68,17 +69,27 @@ El cuestionario está dividido en 3 partes:
    - Autonomía futura
    - Propósito de vida
 
-### Análisis con IA
+### Análisis con IA - Panel Médico Multidisciplinario
 
-El sistema envía las respuestas del cuestionario a OpenAI GPT-4 para generar:
+El sistema envía las respuestas del cuestionario a OpenAI GPT-4 que simula un panel de 11 especialistas médicos evaluando de forma integral al paciente:
 
-- Resumen ejecutivo del estado de salud
-- Factores de riesgo identificados
-- Fortalezas y aspectos positivos
-- Recomendaciones prioritarias
-- Plan de acción específico
-- Alertas médicas
-- Motivación personalizada
+**Panel de Especialistas:**
+- Cardiólogo, Endocrinólogo, Neurólogo, Geriatra
+- Neumólogo del sueño, Nefrólogo, Oncólogo
+- Psiquiatra/Psicólogo, Medicina del deporte
+- Urólogo/Ginecólogo, Médico integrador (moderador)
+
+**El análisis genera:**
+- Evaluaciones especializadas desde cada disciplina
+- Identificación de riesgos y banderas de alerta
+- Síntesis transversal de trayectorias de riesgo
+- Priorización de focos críticos (5, 10, 20 años)
+- Lista de temas para discutir con su médico
+- Preguntas concretas para llevar a consulta
+- Estudios clínicos sugeridos
+- Recomendaciones de estilo de vida basadas en evidencia
+- Palabras de aliento y motivación personalizada
+- Advertencias claras: NO es diagnóstico médico
 
 ## Costos de OpenAI
 
@@ -114,6 +125,27 @@ src/
 ├── App.jsx                     # Componente principal
 └── main.jsx                    # Punto de entrada
 ```
+
+## Funcionalidades Adicionales
+
+### Descarga y Compartir
+
+Después de completar el análisis, los usuarios pueden:
+
+**Descargar Reporte (TXT)**
+- Descarga un archivo de texto con el cuestionario completo, respuestas y análisis
+- Formato limpio y profesional para compartir con médicos
+- Incluye timestamp y advertencias médicas
+
+**Copiar al Portapapeles**
+- Copia el reporte completo para pegarlo donde sea necesario
+- Útil para enviar por email, WhatsApp, o guardar en notas
+- Confirmación visual cuando se copia exitosamente
+
+**Invitación para Compartir**
+- Sección dedicada que invita a compartir la herramienta con familiares
+- Botón para copiar el enlace de la aplicación
+- Mensaje sobre la importancia de la prevención
 
 ## Personalización
 

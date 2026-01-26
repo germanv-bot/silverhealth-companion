@@ -10,6 +10,7 @@ Una aplicación web de evaluación de salud completa con análisis personalizado
 **18 preguntas estructuradas en 3 partes:**
 
 1. **Parte 1 - Hábitos y Funcionamiento Diario**
+   - Sexo biológico
    - Sueño (horas, calidad, apnea)
    - Energía y vitalidad
    - Actividad física y capacidad funcional
@@ -23,7 +24,7 @@ Una aplicación web de evaluación de salud completa con análisis personalizado
    - Enfermedades diagnosticadas
    - Medicamentos actuales
    - Suplementos
-   - Antecedentes familiares
+   - Antecedentes familiares (enfermedades hereditarias)
 
 3. **Parte 3 - Factores de Longevidad**
    - Función sexual
@@ -32,17 +33,34 @@ Una aplicación web de evaluación de salud completa con análisis personalizado
    - Miedos sobre el envejecimiento
    - Propósito de vida
 
-### Análisis con IA Avanzada
+### Análisis con IA Avanzada - Panel Médico Multidisciplinario
 
-Integración con **OpenAI GPT-4** que genera:
+Integración con **OpenAI GPT-4** que simula un panel de 11 especialistas médicos:
 
-- ✅ **Resumen ejecutivo** del estado de salud
-- ✅ **Factores de riesgo** priorizados por importancia
-- ✅ **Fortalezas** y aspectos positivos
-- ✅ **Recomendaciones** inmediatas, corto y largo plazo
-- ✅ **Plan de acción** específico (nutrición, ejercicio, sueño, estrés)
-- ✅ **Alertas médicas** que requieren atención
-- ✅ **Motivación personalizada** conectada con su propósito
+**Especialistas del Panel:**
+- Cardiólogo clínico y preventivo
+- Endocrinólogo-metabolista
+- Neurólogo especializado en envejecimiento cognitivo
+- Geriatra enfocado en alta funcionalidad
+- Neumólogo especialista en trastornos del sueño
+- Nefrólogo preventivo
+- Oncólogo de detección temprana
+- Psiquiatra/psicólogo clínico
+- Especialista en medicina del deporte y fuerza
+- Urólogo-andrólogo / ginecólogo (según sexo)
+- Médico integrador de longevidad (moderador)
+
+**El análisis incluye:**
+- ✅ **Evaluaciones especializadas** desde cada disciplina médica
+- ✅ **Identificación de riesgos** y banderas rojas/amarillas
+- ✅ **Síntesis integradora** de trayectorias de riesgo
+- ✅ **Priorización** de focos críticos a 5, 10 y 20 años
+- ✅ **Lista de temas** para discutir con su médico
+- ✅ **Preguntas concretas** para llevar a consulta
+- ✅ **Estudios sugeridos** a considerar
+- ✅ **Recomendaciones** basadas en evidencia científica
+- ✅ **Palabras de aliento** y motivación personalizada
+- ✅ **Advertencias claras** de que NO es diagnóstico médico
 
 ### Interfaz Profesional
 
@@ -52,6 +70,9 @@ Integración con **OpenAI GPT-4** que genera:
 - 🔄 Navegación intuitiva adelante/atrás
 - ♿ Accesible: texto grande, alto contraste, touch-friendly
 - 📱 Responsive: funciona en móviles, tablets y desktop
+- 💾 **Descarga del reporte completo** en formato TXT
+- 📋 **Copia al portapapeles** del análisis completo
+- 🔗 **Invitación para compartir** con familiares y amigos
 
 ## 🚀 Inicio Rápido
 
@@ -121,6 +142,55 @@ src/
 └── main.jsx                    # Punto de entrada
 ```
 
+## 💾 Funcionalidades de Descarga y Compartir
+
+### Descarga del Reporte Completo
+
+Después de completar el análisis, el usuario puede:
+
+1. **Descargar como archivo TXT**
+   - Incluye el cuestionario completo con todas las respuestas
+   - Incluye el análisis detallado del panel médico
+   - Formato limpio y legible para compartir con médicos
+   - Nombre del archivo: `SilverHealth_Reporte_YYYY-MM-DD.txt`
+
+2. **Copiar al portapapeles**
+   - Copia el reporte completo para pegarlo en email, WhatsApp, etc.
+   - Confirmación visual cuando se copia exitosamente
+   - Compatible con todos los navegadores modernos
+
+3. **Compartir la aplicación**
+   - Sección dedicada para invitar a familiares y amigos
+   - Botón para copiar el enlace de la aplicación
+   - Mensaje motivador sobre la importancia de la prevención
+
+### Estructura del Reporte Descargable
+
+El archivo descargado contiene:
+
+```
+═══════════════════════════════════════════════════
+    SILVERHEALTH - ANÁLISIS INTEGRAL DE SALUD
+═══════════════════════════════════════════════════
+
+Fecha del análisis: [timestamp]
+
+⚠️ AVISO MÉDICO IMPORTANTE:
+Este documento NO constituye un diagnóstico médico...
+
+═══════════════════════════════════════════════════
+
+SECCIÓN 1: CUESTIONARIO COMPLETADO
+[Todas las preguntas con sus respuestas...]
+
+SECCIÓN 2: ANÁLISIS DEL PANEL MÉDICO
+[Análisis completo generado por IA...]
+
+═══════════════════════════════════════════════════
+Generado por SilverHealth
+═══════════════════════════════════════════════════
+```
+
 ## 🔧 Personalización
 
 ### Modificar Preguntas
@@ -158,6 +228,9 @@ Editar el prompt en `src/utils/openaiService.js` función `analyzeWithOpenAI()` 
 ## 📚 Documentación
 
 - **[SETUP.md](./SETUP.md)**: Guía completa de configuración
+- **[CONFIGURAR_API_KEY.md](./CONFIGURAR_API_KEY.md)**: Guía paso a paso para configurar OpenAI
+- **[docs/PANEL_MEDICO.md](./docs/PANEL_MEDICO.md)**: Explicación detallada del panel médico multidisciplinario
+- **[docs/DESCARGAR_Y_COMPARTIR.md](./docs/DESCARGAR_Y_COMPARTIR.md)**: Guía completa de funcionalidades de descarga y compartir
 - **[.env.example](./.env.example)**: Plantilla de variables de entorno
 
 ## ⚕️ Aviso Legal
