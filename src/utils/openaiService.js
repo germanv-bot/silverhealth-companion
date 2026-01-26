@@ -5,15 +5,18 @@ const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 export async function analyzeWithOpenAI(answers, questionnaire) {
   // Debug: verificar que la API key se esté cargando
   console.log('🔑 Verificando API Key...');
+  console.log('API Key tipo:', typeof OPENAI_API_KEY);
+  console.log('API Key valor:', OPENAI_API_KEY);
   console.log('API Key presente:', OPENAI_API_KEY ? `Sí (${OPENAI_API_KEY.substring(0, 20)}...)` : 'No');
 
   // Si no hay API key, usar análisis local
   if (!OPENAI_API_KEY || OPENAI_API_KEY === 'undefined' || OPENAI_API_KEY === 'sk-your-api-key-here') {
     console.warn('⚠️ API Key de OpenAI no configurada. Usando análisis local básico.');
+    console.warn('Razón:', !OPENAI_API_KEY ? 'No existe' : `Valor inválido: ${OPENAI_API_KEY}`);
     return analyzeLocally(answers, questionnaire);
   }
 
-  console.log('✅ API Key válida detectada. Consultando OpenAI...');
+  console.log('✅ API Key válida detectada. Consultando OpenAI con modelo gpt-4o-mini...');
 
   // Formatear las respuestas de manera legible
   const formattedAnswers = formatAnswersForAI(answers, questionnaire);
@@ -115,13 +118,19 @@ Comienza la simulación del panel médico ahora, proporcionando el análisis com
 
     if (!response.ok) {
       const errorData = await response.json();
+      console.error('❌ Error de OpenAI API:', errorData);
+      console.error('Status:', response.status);
+      console.error('Mensaje:', errorData.error?.message);
       throw new Error(errorData.error?.message || 'Error al comunicarse con OpenAI');
     }
 
     const data = await response.json();
+    console.log('✅ Respuesta exitosa de OpenAI recibida');
+    console.log('Tokens usados - Input:', data.usage?.prompt_tokens, 'Output:', data.usage?.completion_tokens);
     return data.choices[0].message.content;
   } catch (error) {
-    console.error('Error en analyzeWithOpenAI:', error);
+    console.error('❌ Error en analyzeWithOpenAI:', error);
+    console.error('Stack:', error.stack);
     throw error;
   }
 }
