@@ -7,6 +7,16 @@ export const questionnaire = {
       description: 'Preguntas sobre su rutina diaria y estilo de vida',
       questions: [
         {
+          id: 'sexo',
+          type: 'radio',
+          category: 'Información básica',
+          question: 'Sexo biológico:',
+          options: [
+            { value: 'masculino', label: 'Masculino' },
+            { value: 'femenino', label: 'Femenino' }
+          ]
+        },
+        {
           id: 'sueno_horas',
           type: 'radio',
           category: 'Sueño',
@@ -299,26 +309,21 @@ export const questionnaire = {
           ]
         },
         {
-          id: 'antecedentes_causa',
-          type: 'radio',
+          id: 'antecedentes_familiares',
+          type: 'checkbox',
           category: 'Antecedentes familiares',
-          question: 'Principal causa de muerte en padres/hermanos:',
+          question: '¿Alguno de sus padres o hermanos ha padecido de:',
           options: [
-            { value: 'infarto', label: 'Infarto' },
-            { value: 'evc', label: 'EVC' },
-            { value: 'cancer', label: 'Cáncer' },
+            { value: 'infarto', label: 'Infarto al corazón' },
+            { value: 'evc', label: 'EVC (Derrame cerebral)' },
+            { value: 'cancer', label: 'Cáncer (cualquier tipo)' },
             { value: 'diabetes', label: 'Diabetes' },
-            { value: 'no_aplica', label: 'No aplica / Desconocido' }
+            { value: 'hipertension', label: 'Hipertensión' },
+            { value: 'alzheimer', label: 'Alzheimer / Demencia' },
+            { value: 'ninguna', label: 'Ninguna / No lo sé' }
           ],
           hasOther: true,
-          otherLabel: 'Otra (especifique):'
-        },
-        {
-          id: 'antecedentes_edad',
-          type: 'number',
-          category: 'Antecedentes familiares',
-          question: 'Edad aproximada del familiar al fallecer:',
-          placeholder: 'Ej: 65'
+          otherLabel: 'Otra enfermedad importante (especifique):'
         }
       ]
     },

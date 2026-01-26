@@ -12,44 +12,76 @@ export async function analyzeWithOpenAI(answers, questionnaire) {
   // Formatear las respuestas de manera legible
   const formattedAnswers = formatAnswersForAI(answers, questionnaire);
 
-  const prompt = `Eres un médico especialista en medicina preventiva y longevidad. Has recibido las siguientes respuestas de un cuestionario de salud integral.
+  const prompt = `Actúa como un Panel Médico Multidisciplinario de Alta Especialidad enfocado en evaluación de riesgos y longevidad funcional a 20 años.
 
-Tu tarea es proporcionar un análisis médico completo, personalizado y empático que incluya:
+El panel está compuesto por los siguientes especialistas:
 
-1. **RESUMEN EJECUTIVO**: Una visión general del estado de salud del paciente en 2-3 párrafos.
+• Cardiólogo clínico y preventivo
+• Endocrinólogo-metabolista
+• Neurólogo especializado en envejecimiento cognitivo
+• Geriatra enfocado en alta funcionalidad
+• Neumólogo especialista en trastornos del sueño
+• Nefrólogo preventivo
+• Oncólogo de detección temprana
+• Psiquiatra/psicólogo clínico de adultos mayores
+• Especialista en medicina del deporte y fuerza
+• Urólogo-andrólogo (o ginecólogo según sexo biológico)
+• Médico integrador de longevidad (moderador del panel)
 
-2. **FACTORES DE RIESGO IDENTIFICADOS**: Lista los principales riesgos para la salud y longevidad, priorizados por importancia.
+DINÁMICA DEL PANEL:
 
-3. **FORTALEZAS Y ASPECTOS POSITIVOS**: Reconoce los buenos hábitos y factores protectores.
+1. Cada especialista revisará las respuestas desde la perspectiva de su disciplina.
 
-4. **RECOMENDACIONES PRIORITARIAS**:
-   - Cambios inmediatos (próximas 2 semanas)
-   - Objetivos a corto plazo (3 meses)
-   - Objetivos a largo plazo (1 año)
+2. Solo intervendrán aquellos especialistas que detecten hallazgos relevantes, riesgos, banderas amarillas o rojas.
 
-5. **PLAN DE ACCIÓN ESPECÍFICO**: Recomendaciones concretas y accionables en:
-   - Nutrición
-   - Ejercicio
-   - Sueño
-   - Manejo del estrés
-   - Seguimiento médico
+3. Cada intervención debe incluir:
+   - Qué respuestas le llaman la atención
+   - Qué riesgos potenciales sugieren (no diagnósticos)
+   - Qué preguntas adicionales haría en consulta
+   - Qué estudios o evaluaciones clínicas sugeriría discutir con el médico tratante
 
-6. **ALERTAS MÉDICAS**: Cualquier síntoma o patrón que requiera atención médica inmediata.
+4. El médico integrador:
+   - Hará una síntesis transversal de los riesgos más importantes
+   - Identificará trayectorias de riesgo (cardiovascular, metabólica, cognitiva, fragilidad, emocional)
+   - Priorizará los 5 focos de atención más críticos a 5, 10 y 20 años
 
-7. **MOTIVACIÓN PERSONALIZADA**: Conecta las recomendaciones con el propósito de vida expresado por el paciente.
+DOCUMENTO FINAL PARA EL PACIENTE:
 
-IMPORTANTE:
-- Sé empático pero directo sobre los riesgos
-- Usa lenguaje claro, evita jerga excesiva
-- Prioriza las intervenciones por impacto en longevidad
-- Reconoce los aspectos emocionales y psicológicos
-- Si hay señales de depresión, ansiedad o abuso de sustancias, enfatiza la importancia de ayuda profesional
+Después de las intervenciones del panel, emite un documento dirigido al paciente que incluya:
 
-RESPUESTAS DEL CUESTIONARIO:
+1. **Resumen claro** de los principales riesgos detectados
+2. **Lista de temas** que debe conversar con su médico de cabecera
+3. **Preguntas concretas** que puede llevar a su consulta
+4. **Estudios** que debería preguntar si son pertinentes en su caso
+5. **Recomendaciones generales** de estilo de vida basadas en evidencia
+6. **Palabras de aliento y motivación**:
+   - Reconoce las fortalezas y aspectos positivos del paciente
+   - Si el paciente expresó un propósito de vida, reconócelo y vincúlalo con la importancia de cuidar su salud
+   - Recuerda que la investigación científica muestra que tener un propósito de vida claro está asociado con hasta 7 años adicionales de esperanza de vida
+   - Anima al paciente a tomar acción y buscar a su médico
+   - Mensaje positivo sobre el poder de la prevención y el autocuidado
+
+ADVERTENCIAS OBLIGATORIAS (incluir en múltiples puntos del documento):
+
+⚠️ Esta evaluación NO constituye un diagnóstico médico.
+⚠️ NO sustituye una consulta presencial con profesionales de la salud.
+⚠️ NO indica tratamientos específicos.
+⚠️ Su único propósito es servir como guía estructurada para una conversación profunda, informada y completa con su médico de cabecera y especialistas reales.
+
+TONO DEL PANEL:
+
+- Clínico, claro, respetuoso
+- Sin alarmismo
+- Sin falsas certezas
+- Enfocado en prevención, toma de decisiones informadas y autonomía del paciente
+- Empático con los aspectos emocionales y psicológicos
+- Considera diferencias específicas por sexo biológico en todos los análisis
+
+RESPUESTAS DEL CUESTIONARIO INTEGRAL DE LONGEVIDAD FUNCIONAL:
 
 ${formattedAnswers}
 
-Proporciona tu análisis en español, con formato claro y estructura bien organizada:`;
+Comienza la simulación del panel médico ahora, proporcionando el análisis completo en español con formato claro y bien estructurado:`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -63,7 +95,7 @@ Proporciona tu análisis en español, con formato claro y estructura bien organi
         messages: [
           {
             role: 'system',
-            content: 'Eres un médico especialista en medicina preventiva y longevidad, experto en análisis de factores de riesgo y optimización de salud. Eres empático, directo y basas tus recomendaciones en evidencia científica.'
+            content: 'Eres un panel médico multidisciplinario de alta especialidad. Tu rol es simular la dinámica de un grupo de especialistas médicos evaluando de forma integral a un paciente con enfoque en prevención y longevidad funcional. Cada especialista del panel debe aportar desde su perspectiva clínica, identificando riesgos, sugiriendo estudios pertinentes y formulando preguntas clave. El análisis debe ser clínico, basado en evidencia, sin alarmismo, enfocado en prevención y autonomía del paciente. Siempre incluye advertencias de que esto NO es un diagnóstico y NO sustituye consulta médica real. Al final, proporciona palabras de aliento y motivación al paciente.'
           },
           {
             role: 'user',
@@ -71,7 +103,7 @@ Proporciona tu análisis en español, con formato claro y estructura bien organi
           }
         ],
         temperature: 0.7,
-        max_tokens: 4000
+        max_tokens: 4096
       })
     });
 
@@ -139,6 +171,14 @@ export function analyzeLocally(answers, questionnaire) {
   let analysis = '# ANÁLISIS DE SALUD PRELIMINAR\n\n';
   analysis += '⚠️ Este es un análisis preliminar básico. Para un análisis completo, configure su API Key de OpenAI.\n\n';
 
+  // Información básica
+  const sexo = answers.sexo;
+  if (sexo) {
+    analysis += `## INFORMACIÓN BÁSICA\n`;
+    analysis += `Sexo biológico: ${sexo === 'masculino' ? 'Masculino' : 'Femenino'}\n\n`;
+    analysis += 'ℹ️ El análisis completo con IA considerará factores de riesgo específicos según su sexo biológico.\n\n';
+  }
+
   // Analizar sueño
   const sleepHours = answers.sueno_horas;
   const sleepQuality = answers.sueno_calidad;
@@ -175,10 +215,24 @@ export function analyzeLocally(answers, questionnaire) {
     analysis += '**Recomendación**: Considere consulta con profesional de salud mental.\n\n';
   }
 
+  // Analizar antecedentes familiares
+  const antecedentes = answers.antecedentes_familiares || [];
+  if (antecedentes.length > 0 && !antecedentes.includes('ninguna')) {
+    analysis += '## 4. RIESGO GENÉTICO\n';
+    analysis += '⚠️ Antecedentes familiares detectados:\n';
+    antecedentes.forEach(ant => {
+      if (ant !== 'ninguna') {
+        analysis += `- ${ant}\n`;
+      }
+    });
+    analysis += '\n**Importante**: Los antecedentes familiares aumentan su riesgo. ';
+    analysis += 'Discuta con su médico sobre screening preventivo apropiado.\n\n';
+  }
+
   // Propósito
   const purpose = answers.proposito;
   if (purpose) {
-    analysis += '## 4. PROPÓSITO Y MOTIVACIÓN\n';
+    analysis += '## 5. PROPÓSITO Y MOTIVACIÓN\n';
     analysis += `Su motivación: "${purpose}"\n\n`;
     analysis += 'Tener un propósito claro está asociado con:\n';
     analysis += '- Hasta 7 años más de esperanza de vida\n';
