@@ -97,7 +97,7 @@ Comienza la simulación del panel médico ahora, proporcionando el análisis com
         'Authorization': `Bearer ${OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'gpt-4-turbo-preview',
+        model: 'gpt-4o-mini',
         messages: [
           {
             role: 'system',

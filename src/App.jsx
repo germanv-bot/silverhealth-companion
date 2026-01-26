@@ -37,10 +37,10 @@ function App() {
           </div>
           <div>
             <p className="text-base sm:text-lg text-amber-900 font-bold mb-1">
-              Aviso Médico Importante
+              ADVERTENCIA:
             </p>
             <p className="text-sm sm:text-base text-amber-800">
-              Esta herramienta proporciona información general únicamente. Siempre consulte con su médico.
+              Esta herramienta proporciona información general únicamente, no consejos médicos. Siempre consulte con su médico.
             </p>
           </div>
         </div>
@@ -63,7 +63,7 @@ function App() {
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight">
-              Bienvenido a tu Chequeo Facil
+              Bienvenido a tu Chequeo Fácil
             </h2>
 
             <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
@@ -96,7 +96,7 @@ function App() {
               onClick={() => setShowWizard(true)}
             >
               <span className="flex items-center justify-center gap-4">
-                INICIAR CHEQUEO
+                INICIAR CUESTIONARIO
                 <svg className="w-10 h-10 group-hover:translate-x-2 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"/>
                 </svg>
