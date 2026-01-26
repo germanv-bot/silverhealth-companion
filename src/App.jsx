@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HealthWizard from './components/HealthWizard';
+import HealthWizard from './components/Wizard';
 
 function App() {
   const [showWizard, setShowWizard] = useState(false);
