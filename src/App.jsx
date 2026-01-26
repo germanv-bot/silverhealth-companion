@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import HealthWizard from './components/Wizard';
+import NewWizard from './components/NewWizard';
 
 function App() {
   const [showWizard, setShowWizard] = useState(false);
@@ -50,7 +50,7 @@ function App() {
       <main className="flex-grow flex flex-col items-center justify-center p-8">
 
         {showWizard ? (
-          <HealthWizard onReset={() => setShowWizard(false)} />
+          <NewWizard onReset={() => setShowWizard(false)} />
         ) : (
           <div className="text-center max-w-4xl animate-slide-up">
             <div className="mb-8 inline-block">
@@ -67,7 +67,7 @@ function App() {
             </h2>
 
             <p className="text-2xl text-gray-700 mb-4 leading-relaxed">
-              Te haremos 5 preguntas sencillas para preparar un informe para tu médico.
+              Cuestionario completo de salud y longevidad para generar un análisis personalizado con IA.
             </p>
             <div className="flex items-center justify-center gap-4 text-lg text-gray-600 mb-12">
               <span className="flex items-center gap-2">
