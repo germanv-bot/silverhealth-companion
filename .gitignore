@@ -17,6 +17,11 @@ dist-ssr
 .env.local
 .env.production
 
+# Secrets folder - NEVER commit this
+secrets/
+*.key
+*.secret
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
