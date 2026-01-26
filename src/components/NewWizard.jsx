@@ -16,7 +16,11 @@ export default function NewWizard({ onReset }) {
   const currentSection = questionnaire.sections[currentSectionIndex];
   const currentQuestion = currentSection?.questions[currentQuestionIndex];
   const totalQuestions = questionnaire.sections.reduce((sum, section) => sum + section.questions.length, 0);
-  const answeredQuestions = Object.keys(answers).filter(key => !key.endsWith('_other')).length;
+
+  // Calcular el número de pregunta actual (índice absoluto)
+  const currentQuestionNumber = questionnaire.sections
+    .slice(0, currentSectionIndex)
+    .reduce((sum, section) => sum + section.questions.length, 0) + currentQuestionIndex + 1;
 
   const handleAnswerChange = (questionId, value) => {
     setAnswers(prev => ({
@@ -287,14 +291,14 @@ export default function NewWizard({ onReset }) {
       <div className="w-full bg-gray-200 h-3 rounded-full mb-6 overflow-hidden shadow-inner">
         <div
           className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 h-full transition-all duration-500 rounded-full"
-          style={{ width: `${(answeredQuestions / totalQuestions) * 100}%` }}
+          style={{ width: `${(currentQuestionNumber / totalQuestions) * 100}%` }}
         ></div>
       </div>
 
       {/* Indicador de progreso */}
       <div className="mb-6 text-center">
         <span className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 px-5 py-2 rounded-full text-lg font-bold shadow-sm">
-          Pregunta {answeredQuestions + 1} de {totalQuestions}
+          Pregunta {currentQuestionNumber} de {totalQuestions}
         </span>
         <p className="text-gray-600 mt-2 text-lg font-medium">{currentSection.title}</p>
       </div>

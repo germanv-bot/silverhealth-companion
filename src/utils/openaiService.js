@@ -3,11 +3,17 @@
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
 export async function analyzeWithOpenAI(answers, questionnaire) {
+  // Debug: verificar que la API key se esté cargando
+  console.log('🔑 Verificando API Key...');
+  console.log('API Key presente:', OPENAI_API_KEY ? `Sí (${OPENAI_API_KEY.substring(0, 20)}...)` : 'No');
+
   // Si no hay API key, usar análisis local
   if (!OPENAI_API_KEY || OPENAI_API_KEY === 'undefined' || OPENAI_API_KEY === 'sk-your-api-key-here') {
-    console.warn('API Key de OpenAI no configurada. Usando análisis local básico.');
+    console.warn('⚠️ API Key de OpenAI no configurada. Usando análisis local básico.');
     return analyzeLocally(answers, questionnaire);
   }
+
+  console.log('✅ API Key válida detectada. Consultando OpenAI...');
 
   // Formatear las respuestas de manera legible
   const formattedAnswers = formatAnswersForAI(answers, questionnaire);
