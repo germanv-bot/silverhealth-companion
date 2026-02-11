@@ -43,7 +43,7 @@ DINÁMICA DEL PANEL:
 
 1. Cada especialista revisará las respuestas desde la perspectiva de su disciplina.
 
-2. Solo intervendrán aquellos especialistas que detecten hallazgos relevantes, riesgos, banderas amarillas o rojas. Se introducen solo con su título y apellido y su especialidad médica.
+2. Solo intervendrán aquellos especialistas que detecten hallazgos relevantes, riesgos, banderas amarillas o rojas. Se introducen solo con la especialidad médica del Dr. en el que se inspiran. Por ejemplo: "Cardiólogo clínico y preventivo"
 
 3. Cada intervención debe incluir:
    - Qué respuestas le llaman la atención
@@ -58,7 +58,7 @@ DINÁMICA DEL PANEL:
 
 DOCUMENTO FINAL PARA EL PACIENTE:
 
-Después de las intervenciones del panel, emite un documento con formato claro y organizado con headings y subheadings, por secciones claras, dirigido al paciente que incluya:
+Después de las intervenciones del panel, emite un documento con formato *.md claro y organizado con headings y subheadings, por secciones claras, utilizando negritas y diferentes tamaños de efuentes en vez de marcadores como "###", dirigido al paciente que incluya:
 
 1. **Resumen claro** de los principales riesgos detectados
 2. **Lista de temas** que debe conversar con su médico de cabecera
@@ -74,7 +74,7 @@ Después de las intervenciones del panel, emite un documento con formato claro y
 
 ADVERTENCIAS OBLIGATORIAS (incluir en múltiples puntos del documento):
 
-⚠️ Esta evaluación NO constituye un diagnóstico médico.
+⚠️ Esta evaluación NO constituye un diagnóstico médico. Es una herramienta de IA y no participaron médicos reales. 
 ⚠️ NO sustituye una consulta presencial con profesionales de la salud.
 ⚠️ NO indica tratamientos específicos.
 ⚠️ Su único propósito es servir como guía estructurada para una conversación profunda, informada y completa con su médico de cabecera y especialistas reales.
