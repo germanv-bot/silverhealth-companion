@@ -17,6 +17,36 @@ export const questionnaire = {
           ]
         },
         {
+          id: 'peso',
+          type: 'number',
+          category: 'Información básica',
+          question: 'Peso (en kilogramos):',
+          placeholder: 'Ej: 75',
+          unit: 'kg'
+        },
+        {
+          id: 'altura',
+          type: 'number',
+          category: 'Información básica',
+          question: 'Altura (en centímetros):',
+          placeholder: 'Ej: 170',
+          unit: 'cm'
+        },
+        {
+          id: 'circunferencia_cintura',
+          type: 'radio',
+          category: 'Información básica',
+          question: 'Circunferencia de cintura (medida a nivel del ombligo):',
+          options: [
+            { value: '<80', label: 'Menos de 80 cm (31.5 in)' },
+            { value: '80-90', label: '80-90 cm (31.5-35.4 in)' },
+            { value: '90-100', label: '90-100 cm (35.4-39.4 in)' },
+            { value: '100-110', label: '100-110 cm (39.4-43.3 in)' },
+            { value: '>110', label: 'Más de 110 cm (43.3 in)' },
+            { value: 'no_se', label: 'No lo sé' }
+          ]
+        },
+        {
           id: 'sueno_horas',
           type: 'radio',
           category: 'Sueño',
