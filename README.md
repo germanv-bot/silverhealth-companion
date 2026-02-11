@@ -11,6 +11,8 @@ Una aplicación web de evaluación de salud completa con análisis personalizado
 
 1. **Parte 1 - Hábitos y Funcionamiento Diario**
    - Sexo biológico
+   - Edad
+   - Estatura, peso, circunferencia de cintura
    - Sueño (horas, calidad, apnea)
    - Energía y vitalidad
    - Actividad física y capacidad funcional

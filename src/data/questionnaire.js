@@ -17,6 +17,14 @@ export const questionnaire = {
           ]
         },
         {
+          id: 'edad',
+          type: 'number',
+          category: 'Información básica',
+          question: 'Edad (en años):',
+          placeholder: 'Ej: 45',
+          unit: 'años'
+        },
+        {
           id: 'peso',
           type: 'number',
           category: 'Información básica',

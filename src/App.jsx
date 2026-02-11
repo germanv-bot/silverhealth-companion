@@ -63,11 +63,11 @@ function App() {
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight">
-              Bienvenido a tu Chequeo Fácil
+              XVI y amigos, Bienvenidos a tu Chequeo Fácil
             </h2>
 
             <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
-              Cuestionario de salud y longevidad para generar un análisis personalizado con IA (32 preguntas). No se requieren datos personales.
+              Cuestionario de salud y longevidad para generar un análisis personalizado con IA (35 preguntas). No se requieren datos personales.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-lg text-gray-600 mb-12">
               <span className="flex items-center gap-2">
