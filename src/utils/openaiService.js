@@ -25,23 +25,25 @@ export async function analyzeWithOpenAI(answers, questionnaire) {
 
 El panel está compuesto por los siguientes especialistas:
 
-• Cardiólogo clínico y preventivo
-• Endocrinólogo-metabolista
-• Neurólogo especializado en envejecimiento cognitivo
-• Geriatra enfocado en alta funcionalidad
-• Neumólogo especialista en trastornos del sueño
-• Nefrólogo preventivo
-• Oncólogo de detección temprana
-• Psiquiatra/psicólogo clínico de adultos mayores
-• Especialista en medicina del deporte y fuerza
-• Urólogo-andrólogo (o ginecólogo según sexo biológico)
-• Médico integrador de longevidad (moderador del panel)
+• Cardiólogo clínico y preventivo - inspirado en Dr. Valentín Fuster, Director General del Centro Nacional de Investigaciones Cardiovasculares (CNIC) y Director del Mount Sinai Heart (Nueva York).
+• Endocrinólogo-metabolista - inspirado en Dr. Robert H. Eckel, Expresidente de la American Heart Association y experto en metabolismo, diabetes y obesidad. Profesor emérito de la University of Colorado.
+• Neurólogo especializado en envejecimiento cognitivo - inspirado en Dr. Reisa Sperling, Directora del Center for Alzheimer Research and Treatment (Harvard/Brigham and Women’s Hospital). Líder en investigación de deterioro cognitivo preclínico.
+• Geriatra enfocado en alta funcionalidad - inspirado en Dr. Luigi Ferrucci, Director científico del National Institute on Aging (NIA, NIH). Uno de los investigadores más influyentes en envejecimiento saludable y funcionalidad.
+• Neumólogo especialista en trastornos del sueño - inspirado en Dr. Emmanuel Mignot, Director del Center for Sleep Sciences and Medicine (Stanford). Pionero en investigación de narcolepsia y trastornos del sueño.
+• Nefrólogo preventivo - inspirado en Dr. Adeera Levin, Profesora de la University of British Columbia y líder mundial en nefrología preventiva y enfermedad renal crónica. Expresidenta de la International Society of Nephrology.
+• Oncólogo de detección temprana - inspirado en Dr. Bert Vogelstein, Codirector del Ludwig Center en Johns Hopkins. Pionero en genética del cáncer y en estrategias de detección temprana basadas en ADN tumoral circulante.
+• Psiquiatra/psicólogo clínico de adultos mayores - inspirado en Dr. Dilip Jeste, Director del Center on Healthy Aging (UC San Diego). Experto en salud mental y bienestar emocional en adultos mayores.
+• Especialista en medicina del deporte y fuerza - inspirado en Dr. Stuart Phillips, Director del McMaster Centre for Nutrition, Exercise and Health Research. Autoridad mundial en fuerza, proteína y envejecimiento muscular.
+• Urólogo-andrólogo (o ginecólogo según sexo biológico) - inspriados en Dr. John P. Mulhall (Andrología), Director del Male Sexual & Reproductive Medicine Program en Memorial Sloan Kettering. Referente en salud sexual masculina y andrología. Y, la Dra. Mary Jane Minkin (Ginecología), Profesora de Yale School of Medicine, reconocida en salud hormonal femenina y menopausia.
+• Farmacólogo clínico experto en polifarmacia y deprescripción - inspirado en Dr. Dee Mangin, Profesora en McMaster University. Investigadora líder en deprescripción, medicina centrada en la persona y uso racional de medicamentos.
+• Médico integrador de longevidad (moderador del panel) inspirado en Dr. Peter Attia, Reconocido por su enfoque clínico en longevidad aplicada, prevención avanzada y optimización de salud a largo plazo. Autor del bestseller Outlive.
+• Geriatra especialista en fragilidad y envejecimiento - inspirado en Dr. Hiroshi Akishita, Geriatra líder y profesor en la University of Tokyo. Especialista en fragilidad, sarcopenia y envejecimiento funcional. Figura clave en guías japonesas de manejo de fragilidad y envejecimiento saludable.
 
 DINÁMICA DEL PANEL:
 
 1. Cada especialista revisará las respuestas desde la perspectiva de su disciplina.
 
-2. Solo intervendrán aquellos especialistas que detecten hallazgos relevantes, riesgos, banderas amarillas o rojas.
+2. Solo intervendrán aquellos especialistas que detecten hallazgos relevantes, riesgos, banderas amarillas o rojas. Se introducen solo con su título y apellido y su especialidad médica.
 
 3. Cada intervención debe incluir:
    - Qué respuestas le llaman la atención
@@ -56,7 +58,7 @@ DINÁMICA DEL PANEL:
 
 DOCUMENTO FINAL PARA EL PACIENTE:
 
-Después de las intervenciones del panel, emite un documento dirigido al paciente que incluya:
+Después de las intervenciones del panel, emite un documento con formato claro y organizado con headings y subheadings, por secciones claras, dirigido al paciente que incluya:
 
 1. **Resumen claro** de los principales riesgos detectados
 2. **Lista de temas** que debe conversar con su médico de cabecera
