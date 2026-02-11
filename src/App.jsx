@@ -67,7 +67,7 @@ function App() {
             </h2>
 
             <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
-              Cuestionario de salud y longevidad para generar un análisis personalizado con IA (35 preguntas). No se requieren datos personales.
+              Cuestionario super-rápido de salud y longevidad para generar un análisis personalizado con IA (35 preguntas opción múltiple). No se requieren datos personales.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-lg text-gray-600 mb-12">
               <span className="flex items-center gap-2">
